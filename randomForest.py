@@ -2,9 +2,9 @@
 
 
 #importing the library
-#import numpy as np 
+import numpy as np 
 import pandas as pd 
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 dataset = pd.read_csv('coin_Bitcoin.csv')
 #dataset2 = pd.read_csv('bitcoin_price.csv')
@@ -28,21 +28,23 @@ x_train = sc_x.fit_transform(x_train)
 x_test = sc_x.transform(x_test)
  
 #fitting the randomforest classification
-from sklearn.ensemble import RandomForestClassifier
-classifier = RandomForestClassifier(n_estimators = 10, criterion ='entropy')
-classifier.fit(x_train,y_train)
+from sklearn.ensemble import RandomForestRegressor
+regressor = RandomForestRegressor(n_estimators = 10,random_state = 0)
+regressor.fit(x_train,y_train)
 
 #make the prediction
-y_pred = classifier.predict(x_test)
-
-#printing original and predicted value
-print('printing the original test value')
-print(y_test)
-print('\n printing the predicted values ')
-print(y_pred)
-
-#print score
-from sklearn.metrics import accuracy_score
-accuracy_score(y_test,y_pred)
+y_pred_randomForest = regressor.predict(x_test)
 
 
+'''
+#visualizing the result 
+#we can't visualize accuracy of regression model like we use to do with 
+#classification model so we have to rely on the graph
+
+plt.scatter(np.arange(0,len(x_train),1),y_train, color = 'red')
+plt.plot(x_train, regressor.predict(x_train),color = 'blue')
+plt.title('opening and day high prices vs closing prices')
+plt.xlabel('opening and day high prices')
+plt.ylabel('closing price')
+plt.show
+'''
