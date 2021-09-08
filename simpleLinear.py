@@ -46,6 +46,9 @@ regressor.fit(x_train,y_train)
 #make the prediction
 y_pred_linear = regressor.predict(x_test)
 
+plt.scatter(dataset['Open'],dataset['Close'])
+plt.show();
+
 #visualizing the result 
 #we can't visualize accuracy of regression model like we use to do with 
 #classification model so we have to rely on the graph
