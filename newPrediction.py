@@ -7,11 +7,13 @@ Created on Mon Sep  6 21:50:46 2021
 import pickle
 import numpy as np
 import pandas as pd
+import keras 
 #load the lstm model 
 pickle_in = open('lstmModel.pickle','rb')
 properties = pickle.load(pickle_in)
 
-model = properties['model']
+model = keras.models.load_model("regressor")
+#properties['model']
 scaler = properties['scaler']
 dataPickled = properties['data']
 
@@ -40,5 +42,4 @@ def predictor(day_Range = 1):
         #store the predicted value
         predicted_value.append(Y_pred_scaled[0])
     return predicted_value
-values = predictor(2)
-#print(values[1])
+values = predictor(3)

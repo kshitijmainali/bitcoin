@@ -113,10 +113,14 @@ for i in range(0,4):
     
     
 #save the model as pickle
+    
+regressor.save("regressor")
+    
+    
 import pickle
-
+ #"model":regressor,
 properties = {
-        "model":regressor,
+       
         "scaler":scaler,
         "data":data_save
         }
