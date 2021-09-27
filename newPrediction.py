@@ -43,3 +43,4 @@ def predictor(day_Range = 1):
         predicted_value.append(Y_pred_scaled[0])
     return predicted_value
 values = predictor(3)
+print(values[0])

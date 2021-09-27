@@ -70,7 +70,7 @@ regressor.add(Dense(units = 4))
 #compilling the LSTM
 regressor.compile(optimizer= 'adam', loss = 'mean_squared_error')
 #fitting the regressor
-history = regressor.fit(X_train,Y_train, epochs = 20, batch_size = 50)
+history = regressor.fit(X_train,Y_train, epochs = 2, batch_size = 50)
 
 ##part 3##
 
@@ -81,6 +81,21 @@ full_testing = full_testing.drop(['SNo','Name','Symbol','Date','Volume','Marketc
 
 #feature scaling
 inputs = scaler.transform(full_testing)
+
+
+regressor.save("regressor")
+
+import pickle
+ #"model":regressor,
+properties = {
+       
+        "scaler":scaler,
+        "data":data_save
+        }
+with open('lstmModel.pickle','wb') as f:
+    pickle.dump(properties,f)
+
+'''
 
 #building the datastructure
 X_test = []
@@ -114,7 +129,7 @@ for i in range(0,4):
     
 #save the model as pickle
     
-regressor.save("regressor")
+
     
     
 import pickle
@@ -128,3 +143,4 @@ properties = {
 
 with open('lstmModel.pickle','wb') as f:
     pickle.dump(properties,f)
+'''
