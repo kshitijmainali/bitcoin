@@ -8,7 +8,7 @@ Created on Sun Sep  5 13:06:05 2021
 
 #importing the libraries
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
     
