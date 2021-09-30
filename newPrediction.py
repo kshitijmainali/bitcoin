@@ -47,7 +47,7 @@ print(values)
 
 #invest the amount 
 #how much money will be made if I invest given money in argument
-def moneyInvest(money,time = 1):
+def moneyInvest(money,time):
     #get today price
     today_price  = dataPickled.tail(1)['Close']
     #calculate total buyable share
@@ -64,22 +64,28 @@ def moneyInvest(money,time = 1):
     #accumulate tomorrow tota amount collectable
     tomorrow_money =tomorrow_price*buyable
     #print the prediction
-    return tomorrow_money
-asset = moneyInvest(50000)
-print(asset)
+    return tomorrow_money,buyable
+asset,buyable = moneyInvest(100000,1)
+print('today bitcoin value: ', dataPickled.tail(1)['Close'] )
+print('closing value: ', values[0][3] )
+
+print('money at last: ', asset)
+profit=asset-buyable*dataPickled.tail(1)['Close']
+print('profit: ',profit)
 
 
 #predict the amount I would have after given time if I invest given amount of money
 #simply call the moneyInvest with time argument which default value is 1 for tomorrow
 #price prediction
-asset_3days = moneyInvest(100000,3)
-print(asset_3days)
+# asset_3days = moneyInvest(100000,3)
+# print(asset_3days)
 
+
+
+
+'''The final case Invest after t days and see prediction after t+n days'''
 
 '''
-The final case Invest after t days and see prediction after t+n days
-'''
-
 def after_n_invest(amount,invest_after,see_after):
     #get prediction for invest_after 
     price_at_invest = predictor(invest_after)
@@ -97,5 +103,6 @@ def after_n_invest(amount,invest_after,see_after):
     #compute benifit
     benifit = total_at_see - (price_at_invest*buyable)
     return benifit
-benifit = after_n_invest(50000,3,5)
-print(benifit)
+benifit = after_n_invest(100000,3,5)
+print('Profit: ',benifit)
+'''
