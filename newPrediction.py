@@ -83,9 +83,9 @@ print('profit: ',profit)
 
 
 
-'''The final case Invest after t days and see prediction after t+n days'''
-
 '''
+The final case Invest after t days and see prediction after t+n days'''
+
 def after_n_invest(amount,invest_after,see_after):
     #get prediction for invest_after 
     price_at_invest = predictor(invest_after)
@@ -105,4 +105,3 @@ def after_n_invest(amount,invest_after,see_after):
     return benifit
 benifit = after_n_invest(100000,3,5)
 print('Profit: ',benifit)
-'''
